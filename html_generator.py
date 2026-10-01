@@ -7,7 +7,6 @@ TOP_OF_FILE = """
 </head>
 """
 
-ROCK = '<img src="../rock.jpg" alt="rock">'
 
 BOTTOM_OF_FILE = """
 </html>
@@ -19,6 +18,10 @@ ATTRIBUTE_MAX = 10
 
 def link(path: str, message: str) -> str:
     return '<a href="' + path + '">' + message + "</a>"
+
+
+def generate_rock(action: str) -> str:
+    return '<img src="../rock' + action + '.png" alt="rock">'
 
 
 def filename(
@@ -136,7 +139,7 @@ def main():
                         ) as file:
                             file_contents = TOP_OF_FILE
                             file_contents += h1(last_action_message[last_action]) + "\n"
-                            file_contents += ROCK + "\n"
+                            file_contents += generate_rock(last_action) + "\n"
                             file_contents += (
                                 h2(
                                     "Happiness: "
